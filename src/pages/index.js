@@ -1,11 +1,10 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Link, Redirect} from 'react-router-dom';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 
 import List from '@material-ui/core/List';
@@ -19,28 +18,24 @@ import Online from './online-class';
 import Promo from './promo';
 import ClassYoga from './class';
 
-
 import logo from '../assets/logo.png';
-
 import useStyles from './styles';
 
 function Pages(){
 	const classes = useStyles();
 	const preventDefault = (event) => event.preventDefault();
 	return (	
-		<Container maxWidth="xl">
-			<Grid container className="header">
+		<>
+			<Grid container className={classes.header}>
 				<Grid item xs={4}>
-					<img src={logo} />
+					<img className={classes.logo} src={logo} />
 				</Grid>
-				<Grid item xs={8}>
-					<Typography className={classes.root}>
-						<Link href="#" onClick={preventDefault}>Home</Link>
-						<Link href="#" onClick={preventDefault}>Class</Link>
-						<Link href="#" onClick={preventDefault}>Promo</Link>
-						<Link href="#" onClick={preventDefault}>Online Class</Link>
-						<Link href="#" onClick={preventDefault}>Contact</Link>
-					</Typography>
+				<Grid item xs={8} className={classes.navTop}>
+					<Typography className={classes.menu} component={Link} to="/">Home</Typography>
+					<Typography className={classes.menu} component={Link} to="/class">Class</Typography>
+					<Typography className={classes.menu} component={Link} to="/promo">Promo</Typography>
+					<Typography className={classes.menu} component={Link} to="/online">Online Class</Typography>
+					<Typography className={classes.menu} component={Link} to="/contact">Contact</Typography>
 				</Grid>
 			</Grid>
 			<main>
@@ -52,67 +47,37 @@ function Pages(){
 					<Route path="/" component={Home} />
 				</Switch>
 			</main>
-			<Container className="footer" fixed maxWidth="lg">
+			<Container className={classes.footer} fixed maxWidth="lg">
 				<Grid container>
 					<Grid item xs={6}>
-						<h2>ABOUT</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-						<img src={logo} />
+						<Typography component="h3" variant="h5">ABOUT</Typography>
+						<p className={classes.briefFooter}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+						<img className={classes.logoFooter} src={logo} />
+					</Grid>					
+					<Grid item xs={2} className={classes.subMenu}>
+						<Typography component="h3" variant="h6" className={classes.titleMenu}>ABOUT</Typography>
+						<Typography className={classes.menuF} component={Link} to="/team">Team</Typography>
+						<Typography className={classes.menuF} component={Link} to="/join-us">Join Us</Typography>
+						<Typography className={classes.menuF} component={Link} to="/Ethic">Ethic</Typography>
+						<Typography className={classes.menuF} component={Link} to="/goal">Goals</Typography>
 					</Grid>
-					<Grid item xs={2}>
-						<h3>ABOUT</h3>
-						<List>
-							<ListItem button>
-								<ListItemText primary={`Team`} />
-							</ListItem>
-							<ListItem button>
-								<ListItemText primary={`Join Us`} />
-							</ListItem>
-							<ListItem button>
-								<ListItemText primary={`Ethic`} />
-							</ListItem>
-							<ListItem button>
-								<ListItemText primary={`Goals`} />
-							</ListItem>
-						</List>
+					<Grid item xs={2} className={classes.subMenu}>
+						<Typography component="h3" variant="h6" className={classes.titleMenu}>ABOUT</Typography>
+						<Typography className={classes.menuF} component={Link} to="/team">Team</Typography>
+						<Typography className={classes.menuF} component={Link} to="/join-us">Join Us</Typography>
+						<Typography className={classes.menuF} component={Link} to="/Ethic">Ethic</Typography>
+						<Typography className={classes.menuF} component={Link} to="/goal">Goals</Typography>
 					</Grid>
-					<Grid item xs={2}>
-						<h3>ABOUT</h3>
-						<List>
-							<ListItem button>
-								<ListItemText primary={`Team`} />
-							</ListItem>
-							<ListItem button>
-								<ListItemText primary={`Join Us`} />
-							</ListItem>
-							<ListItem button>
-								<ListItemText primary={`Ethic`} />
-							</ListItem>
-							<ListItem button>
-								<ListItemText primary={`Goals`} />
-							</ListItem>
-						</List>
-					</Grid>
-					<Grid item xs={2}>
-						<h3>ABOUT</h3>
-						<List>
-							<ListItem button>
-								<ListItemText primary={`Team`} />
-							</ListItem>
-							<ListItem button>
-								<ListItemText primary={`Join Us`} />
-							</ListItem>
-							<ListItem button>
-								<ListItemText primary={`Ethic`} />
-							</ListItem>
-							<ListItem button>
-								<ListItemText primary={`Goals`} />
-							</ListItem>
-						</List>
+					<Grid item xs={2} className={classes.subMenu}>
+						<Typography component="h3" variant="h6" className={classes.titleMenu}>ABOUT</Typography>
+						<Typography className={classes.menuF} component={Link} to="/team">Team</Typography>
+						<Typography className={classes.menuF} component={Link} to="/join-us">Join Us</Typography>
+						<Typography className={classes.menuF} component={Link} to="/Ethic">Ethic</Typography>
+						<Typography className={classes.menuF} component={Link} to="/goal">Goals</Typography>
 					</Grid>
 				</Grid>				
 			</Container>
-		</Container>
+		</>
 	);
 }
 
